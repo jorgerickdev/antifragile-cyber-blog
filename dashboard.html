@@ -32,47 +32,48 @@
             <li><a href="mision-01.html" class="enlace-nav">Misión 01</a></li>
             <li><a href="mision-02.html" class="enlace-nav">Misión 02</a></li>
             <li><a href="mision-03.html" class="enlace-nav">Misión 03</a></li>
+            <li><a href="acerca.html" class="enlace-nav">Acerca del Proyecto</a></li>
         </ul>
     </nav>
 
     <!-- Contenido principal: Resumen y accesos a las misiones -->
     <main class="contenedor-principal">
         
-        <!-- Sección de bienvenida con resumen del proyecto -->
+        <!-- CAMBIO 1: Panel de bienvenida con el origen real del proyecto -->
         <section class="panel-bienvenida">
             <h2>Bienvenido al Centro de Control de Operaciones</h2>
             <p class="texto-resumen">
-                <strong>Antifragile Cyber Labs</strong> es un portal educativo diseñado para la asignatura de <em>Desarrollo de Aplicaciones de Red</em>. Su propósito central es gestionar y documentar la arquitectura web, las bitácoras técnicas de ciberseguridad y las prácticas del laboratorio estructuradas en misiones operativas.
+                Este portal nació originalmente como la primera práctica de la asignatura <em>Desarrollo de Aplicaciones de Red (DAR)</em> para la maquetación de un blog. Aprovechando esta base, el espacio evolucionó para convertirse en la bitácora técnica de documentación para las <strong>15 misiones de entrenamiento intensivo</strong> del proyecto <a href="https://github.com/jorgerickdev/antifragile-cybersecurity-labs" target="_blank" style="color: var(--color-primario);">antifragile-cybersecurity-labs</a>.
             </p>
             <p class="texto-instruccion">
-                Selecciona una misión a continuación para consultar los informes de maquetación semántica, estilos Cyber Dark y control de versiones.
+                Filosofía de ingeniería: Aprendizaje de ciberseguridad bare-metal (Red Team / Blue Team) en 120 días, <strong>sin herramientas automáticas</strong> y programando desde los fundamentos.
             </p>
         </section>
 
-        <!-- Grilla de tarjetas para las misiones principales -->
+        <!-- CAMBIO 2: Documentación ajustada a las misiones reales de Redes Bare-Metal -->
         <section class="seccion-misiones">
             
-            <!-- Tarjeta Misión 01 -->
+            <!-- Misión 01 -->
             <article class="tarjeta-mision">
-                <span class="etiqueta-mision">MISIÓN 01</span>
-                <h3>Estructura & Semántica HTML5</h3>
-                <p>Fundamentos de maquetación semántica, organización modular de archivos y elementos del estándar HTML5.</p>
+                <span class="etiqueta-mision">MISIÓN 01 — BARE-METAL</span>
+                <h3>Sniffer Desnudo (Raw Sockets)</h3>
+                <p>Disección de tráfico de red a nivel de bits utilizando Raw Sockets en Python, sin librerías externas ni herramientas automáticas.</p>
                 <a href="mision-01.html" class="boton-tarjeta">Acceder a Misión</a>
             </article>
 
-            <!-- Tarjeta Misión 02 -->
+            <!-- Misión 02 -->
             <article class="tarjeta-mision">
-                <span class="etiqueta-mision">MISIÓN 02</span>
-                <h3>Diseño & Estilos Cyber Dark</h3>
-                <p>Implementación de variables CSS, modo oscuro, componentes dinámicos y maquetación responsiva.</p>
+                <span class="etiqueta-mision">MISIÓN 02 — BARE-METAL</span>
+                <h3>Escáner SYN/FIN Stealth</h3>
+                <p>Construcción manual de paquetes TCP para escaneo sigiloso de puertos y técnicas de evasión de reglas de firewall.</p>
                 <a href="mision-02.html" class="boton-tarjeta">Acceder a Misión</a>
             </article>
 
-            <!-- Tarjeta Misión 03 -->
+            <!-- Misión 03 -->
             <article class="tarjeta-mision">
-                <span class="etiqueta-mision">MISIÓN 03</span>
-                <h3>Control de Versiones & SSH</h3>
-                <p>Gestión de repositorios locales con Git, configuración de llaves SSH y sincronización en GitHub.</p>
+                <span class="etiqueta-mision">MISIÓN 03 — BARE-METAL</span>
+                <h3>Exfiltración e Inyección ICMP</h3>
+                <p>Exfiltración e inyección silenciosa de binarios mediante la encapsulación en paquetes ICMP crudos (Evasión SOC).</p>
                 <a href="mision-03.html" class="boton-tarjeta">Acceder a Misión</a>
             </article>
 
@@ -80,16 +81,19 @@
 
     </main>
 
-    <!-- Pie de página institucional con sección Acerca de -->
+    <!-- CAMBIO 3: Pie de página con enlace a la página dedicada del README / Acerca de -->
     <footer class="pie-pagina">
         <div class="contenedor-pie">
             <div class="seccion-acerca">
-                <h4>Acerca de Antifragile Cyber Labs</h4>
-                <p>Plataforma modular desarrollada para el aprendizaje práctico de desarrollo web, seguridad en red y control de versiones bajo entorno Linux (Ubuntu).</p>
+                <h4>Acerca de Antifragile Cybersecurity</h4>
+                <p>
+                    Entrenamiento de 120 días para la consolidación como Analista de Ciberseguridad. 
+                    <a href="acerca.html" style="color: var(--color-primario); text-decoration: underline;">Conoce el manifiesto completo y mapa de ruta aquí &rarr;</a>
+                </p>
             </div>
             <div class="seccion-creditos">
-                <p>&copy; 2026 Antifragile Cyber Labs — Desarrollo de Aplicaciones de Red</p>
-                <p class="autor-pie">Operador del Sistema: <strong>Rick (jorgerickdev)</strong></p>
+                <p>&copy; 2026 Antifragile Cyber Labs — DAR & Cybersecurity</p>
+                <p class="autor-pie">Operador: <strong>Rick (jorgerickdev)</strong></p>
             </div>
         </div>
     </footer>
