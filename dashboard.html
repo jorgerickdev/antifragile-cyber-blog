@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antifragile Cyber Labs | Dashboard SOC</title>
+    <!-- Estilos globales y específicos del dashboard -->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="cuerpo-dashboard">
+
+    <!-- Encabezado principal del panel con identidad y usuario -->
+    <header class="encabezado-dashboard">
+        <div class="bloque-identidad">
+            <img src="assets/img/antifragile_cyber_labs_logo.png" alt="Logo Antifragile Cyber Labs" class="logo-dashboard" width="140">
+            <div>
+                <h1>PANEL DE OPERACIONES SOC</h1>
+                <p>Antifragile Cyber Labs — Monitoreo & Bitácora de Red</p>
+            </div>
+        </div>
+        <div class="bloque-operador">
+            <span class="etiqueta-estado">🟢 OPERADOR ACTIVO: <strong>Rick</strong></span>
+            <a href="login.html" class="boton-cerrar-sesion">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <!-- Barra de navegación principal del laboratorio -->
+    <nav class="barra-navegacion">
+        <ul class="menu-navegacion">
+            <li><a href="dashboard.html" class="enlace-nav activo">Panel Central</a></li>
+            <li><a href="mision-01.html" class="enlace-nav">Misión 01</a></li>
+            <li><a href="mision-02.html" class="enlace-nav">Misión 02</a></li>
+            <li><a href="mision-03.html" class="enlace-nav">Misión 03</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal: Resumen y accesos a las misiones -->
+    <main class="contenedor-principal">
+        
+        <!-- Sección de bienvenida con resumen del proyecto -->
+        <section class="panel-bienvenida">
+            <h2>Bienvenido al Centro de Control de Operaciones</h2>
+            <p class="texto-resumen">
+                <strong>Antifragile Cyber Labs</strong> es un portal educativo diseñado para la asignatura de <em>Desarrollo de Aplicaciones de Red</em>. Su propósito central es gestionar y documentar la arquitectura web, las bitácoras técnicas de ciberseguridad y las prácticas del laboratorio estructuradas en misiones operativas.
+            </p>
+            <p class="texto-instruccion">
+                Selecciona una misión a continuación para consultar los informes de maquetación semántica, estilos Cyber Dark y control de versiones.
+            </p>
+        </section>
+
+        <!-- Grilla de tarjetas para las misiones principales -->
+        <section class="seccion-misiones">
+            
+            <!-- Tarjeta Misión 01 -->
+            <article class="tarjeta-mision">
+                <span class="etiqueta-mision">MISIÓN 01</span>
+                <h3>Estructura & Semántica HTML5</h3>
+                <p>Fundamentos de maquetación semántica, organización modular de archivos y elementos del estándar HTML5.</p>
+                <a href="mision-01.html" class="boton-tarjeta">Acceder a Misión</a>
+            </article>
+
+            <!-- Tarjeta Misión 02 -->
+            <article class="tarjeta-mision">
+                <span class="etiqueta-mision">MISIÓN 02</span>
+                <h3>Diseño & Estilos Cyber Dark</h3>
+                <p>Implementación de variables CSS, modo oscuro, componentes dinámicos y maquetación responsiva.</p>
+                <a href="mision-02.html" class="boton-tarjeta">Acceder a Misión</a>
+            </article>
+
+            <!-- Tarjeta Misión 03 -->
+            <article class="tarjeta-mision">
+                <span class="etiqueta-mision">MISIÓN 03</span>
+                <h3>Control de Versiones & SSH</h3>
+                <p>Gestión de repositorios locales con Git, configuración de llaves SSH y sincronización en GitHub.</p>
+                <a href="mision-03.html" class="boton-tarjeta">Acceder a Misión</a>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Pie de página institucional con sección Acerca de -->
+    <footer class="pie-pagina">
+        <div class="contenedor-pie">
+            <div class="seccion-acerca">
+                <h4>Acerca de Antifragile Cyber Labs</h4>
+                <p>Plataforma modular desarrollada para el aprendizaje práctico de desarrollo web, seguridad en red y control de versiones bajo entorno Linux (Ubuntu).</p>
+            </div>
+            <div class="seccion-creditos">
+                <p>&copy; 2026 Antifragile Cyber Labs — Desarrollo de Aplicaciones de Red</p>
+                <p class="autor-pie">Operador del Sistema: <strong>Rick (jorgerickdev)</strong></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

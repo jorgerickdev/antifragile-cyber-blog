@@ -1,0 +1,253 @@
+/* ==========================================================================
+   Antifragile Cyber Labs — Estilos del Dashboard SOC (dashboard.css)
+   ========================================================================== */
+
+/* --- Estructura general --- */
+.cuerpo-dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Encabezado principal SOC --- */
+.encabezado-dashboard {
+    background-color: var(--color-tarjeta);
+    border-bottom: 1px solid var(--color-borde);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.bloque-identidad {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-dashboard {
+    height: auto;
+}
+
+.encabezado-dashboard h1 {
+    font-size: 1.3rem;
+    color: var(--color-primario);
+    letter-spacing: 1px;
+}
+
+.encabezado-dashboard p {
+    font-size: 0.85rem;
+    color: var(--color-secundario);
+}
+
+.bloque-operador {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.etiqueta-estado {
+    font-size: 0.85rem;
+    color: var(--color-texto);
+    background-color: rgba(0, 242, 254, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--color-borde);
+}
+
+.boton-cerrar-sesion {
+    color: var(--color-error);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border: 1px solid var(--color-error);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.boton-cerrar-sesion:hover {
+    background-color: var(--color-error);
+    color: #fff;
+}
+
+/* --- Barra de Navegación --- */
+.barra-navegacion {
+    background-color: #0d1322;
+    border-bottom: 1px solid var(--color-borde);
+    padding: 0 30px;
+}
+
+.menu-navegacion {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+.enlace-nav {
+    display: inline-block;
+    padding: 12px 18px;
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.enlace-nav:hover {
+    color: var(--color-primario);
+}
+
+.enlace-nav.activo {
+    color: var(--color-primario);
+    border-bottom-color: var(--color-primario);
+    background-color: rgba(0, 242, 254, 0.05);
+}
+
+/* --- Contenedor Principal & Panel de Bienvenida --- */
+.contenedor-principal {
+    flex: 1;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.panel-bienvenida {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.panel-bienvenida h2 {
+    color: var(--color-texto);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.panel-bienvenida .texto-resumen {
+    color: var(--color-texto);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel-bienvenida .texto-instruccion {
+    color: var(--color-secundario);
+    font-size: 0.88rem;
+}
+
+/* --- Grilla de Tarjetas para Misiones --- */
+.seccion-misiones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.tarjeta-mision {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.tarjeta-mision:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primario);
+}
+
+.etiqueta-mision {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--color-primario);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.tarjeta-mision h3 {
+    font-size: 1.1rem;
+    color: var(--color-texto);
+    margin-bottom: 10px;
+}
+
+.tarjeta-mision p {
+    font-size: 0.88rem;
+    color: var(--color-secundario);
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.boton-tarjeta {
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 242, 254, 0.1);
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.boton-tarjeta:hover {
+    background-color: var(--color-primario);
+    color: #000;
+}
+
+/* --- Pie de Página (Footer) con sección Acerca de --- */
+.pie-pagina {
+    border-top: 1px solid var(--color-borde);
+    background-color: var(--color-tarjeta);
+    padding: 25px 30px;
+    margin-top: auto;
+}
+
+.contenedor-pie {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.seccion-acerca {
+    max-width: 500px;
+}
+
+.seccion-acerca h4 {
+    color: var(--color-primario);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.seccion-acerca p {
+    color: var(--color-secundario);
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.seccion-creditos {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--color-secundario);
+}
+
+.seccion-creditos .autor-pie {
+    margin-top: 5px;
+    color: var(--color-texto);
+}

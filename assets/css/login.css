@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Antifragile Cyber Labs — Estilos del Login (login.css)
+   ========================================================================== */
+
+.cuerpo-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor-login {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.encabezado-login {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-login {
+    margin-bottom: 15px;
+    height: auto;
+}
+
+.encabezado-login h2 {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: var(--color-primario);
+    margin-bottom: 5px;
+}
+
+.encabezado-login p {
+    font-size: 0.85rem;
+    color: var(--color-secundario);
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grupo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grupo-formulario label {
+    font-size: 0.9rem;
+    color: var(--color-texto);
+}
+
+.grupo-formulario input {
+    padding: 12px;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    color: var(--color-texto);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.grupo-formulario input:focus {
+    border-color: var(--color-primario);
+}
+
+.mensaje-error {
+    background-color: rgba(255, 75, 75, 0.1);
+    border: 1px solid var(--color-error);
+    color: var(--color-error);
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.boton-principal {
+    padding: 12px;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-hover));
+    border: none;
+    border-radius: 6px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.boton-principal:hover {
+    opacity: 0.9;
+}

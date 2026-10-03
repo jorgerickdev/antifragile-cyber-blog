@@ -1,0 +1,26 @@
+/* ==========================================================================
+   Antifragile Cyber Labs — Estilos Globales & Variables (global.css)
+   ========================================================================== */
+
+:root {
+    --color-fondo: #0a0f1d;
+    --color-tarjeta: #111827;
+    --color-borde: #1f2937;
+    --color-texto: #f3f4f6;
+    --color-secundario: #9ca3af;
+    --color-primario: #00f2fe;
+    --color-hover: #4facfe;
+    --color-error: #ff4b4b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
