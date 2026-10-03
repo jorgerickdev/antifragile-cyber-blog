@@ -1,0 +1,237 @@
+/* ==========================================================================
+   Antifragile Cyber Labs — Estilos de Misiones Operativas (misiones.css)
+   ========================================================================== */
+
+/* --- Contenedores de Detalle --- */
+.panel-mision-detalle {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.panel-mision-detalle h3 {
+    color: var(--color-primario);
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+    padding-bottom: 8px;
+}
+
+.badget-modulo {
+    display: inline-block;
+    background-color: rgba(0, 242, 254, 0.1);
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.relato-introductorio {
+    color: var(--color-texto);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* --- Grilla de Conceptos Técnicos --- */
+.grilla-conceptos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.caja-concepto {
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 18px;
+    transition: border-color 0.3s ease;
+}
+
+.caja-concepto:hover {
+    border-color: var(--color-primario);
+}
+
+.caja-concepto h4 {
+    color: var(--color-primario);
+    font-size: 0.98rem;
+    margin-bottom: 8px;
+}
+
+.caja-concepto p {
+    color: var(--color-secundario);
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+.caja-concepto code {
+    background-color: rgba(0, 242, 254, 0.08);
+    color: var(--color-primario);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Fira Code', monospace;
+    font-size: 0.82rem;
+}
+
+/* --- Terminal de Código Hacker --- */
+.contenedor-terminal {
+    background-color: #060913;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.encabezado-terminal {
+    background-color: #0d1322;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.punto-terminal {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.punto-terminal.rojo { background-color: #ff5f56; }
+.punto-terminal.amarillo { background-color: #ffbd2e; }
+.punto-terminal.verde { background-color: #27c93f; }
+
+.titulo-terminal {
+    color: var(--color-secundario);
+    font-size: 0.8rem;
+    font-family: 'Consolas', 'Fira Code', monospace;
+    margin-left: 10px;
+}
+
+.codigo-terminal {
+    padding: 20px;
+    overflow-x: auto;
+    color: #00f2fe;
+    font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    white-space: pre;
+}
+
+/* --- Esquema de Topología Físico --- */
+.esquema-topologia {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.nodo-topologia {
+    flex: 1;
+    min-width: 220px;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.nodo-topologia.ubuntu {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.15);
+}
+
+.icono-nodo {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+}
+
+.nodo-topologia h4 {
+    color: var(--color-texto);
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.nodo-topologia p {
+    color: var(--color-secundario);
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.flecha-conector {
+    color: var(--color-primario);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.texto-resultado-prueba {
+    color: var(--color-texto);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background-color: rgba(0, 242, 254, 0.05);
+    border-left: 3px solid var(--color-primario);
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+/* --- Bloques de Fricción & Blue Team --- */
+.bloque-friccion {
+    background-color: var(--color-fondo);
+    border-left: 4px solid var(--color-error);
+    padding: 18px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.bloque-friccion.blue-team {
+    border-left-color: var(--color-hover);
+}
+
+.bloque-friccion h4 {
+    color: var(--color-error);
+    font-size: 0.98rem;
+    margin-bottom: 10px;
+}
+
+.bloque-friccion.blue-team h4 {
+    color: var(--color-hover);
+}
+
+.bloque-friccion ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bloque-friccion li {
+    color: var(--color-texto);
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+.bloque-friccion code {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--color-primario);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Fira Code', monospace;
+    font-size: 0.82rem;
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antifragile Cyber Labs | Misión 01: Sniffer Bare-Metal</title>
+    <!-- Estilos globales, del dashboard y específicos de las misiones -->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/misiones.css">
+</head>
+<body class="cuerpo-dashboard">
+
+    <!-- Encabezado principal del panel -->
+    <header class="encabezado-dashboard">
+        <div class="bloque-identidad">
+            <img src="assets/img/antifragile_cyber_labs_logo.png" alt="Logo Antifragile Cyber Labs" class="logo-dashboard" width="140">
+            <div>
+                <h1>PANEL DE OPERACIONES SOC</h1>
+                <p>Antifragile Cyber Labs — Monitoreo & Bitácora de Red</p>
+            </div>
+        </div>
+        <div class="bloque-operador">
+            <span class="etiqueta-estado">🟢 OPERADOR ACTIVO: <strong>Rick (jorgerickdev)</strong></span>
+            <a href="login.html" class="boton-cerrar-sesion">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <!-- Barra de navegación principal -->
+    <nav class="barra-navegacion">
+        <ul class="menu-navegacion">
+            <li><a href="dashboard.html" class="enlace-nav">Panel Central</a></li>
+            <li><a href="mision-01.html" class="enlace-nav activo">Misión 01</a></li>
+            <li><a href="mision-02.html" class="enlace-nav">Misión 02</a></li>
+            <li><a href="mision-03.html" class="enlace-nav">Misión 03</a></li>
+            <li><a href="acerca.html" class="enlace-nav">Acerca del Proyecto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal de la Misión 01 -->
+    <main class="contenedor-principal">
+
+        <!-- Banner Titular de la Misión -->
+        <section class="panel-bienvenida">
+            <span class="badget-modulo">MÓDULO 01 — REDES BARE-METAL</span>
+            <h2>🛡️ MISIÓN 01: Sniffer de Red Bare-Metal & Filtro Dinámico de Capa 4</h2>
+            <p class="texto-resumen">
+                <strong>Entorno:</strong> Ubuntu Linux | <strong>Lenguaje:</strong> Python 3 (Sockets Crudos & Sin Librerías Externas) | <strong>Capa:</strong> Enlace de Datos, Red y Transporte (L2 / L3 / L4).
+            </p>
+        </section>
+
+        <!-- SECCIÓN 0: Relato Introductorio y Contexto en Ciberseguridad -->
+        <section class="panel-mision-detalle">
+            <h3>📖 El Rol de los Sniffers en Ciberseguridad: Del Software Comercial al Bare-Metal</h3>
+            <p class="relato-introductorio">
+                Un <strong>sniffer</strong> o analizador de paquetes es una herramienta fundamental en el ecosistema de la ciberseguridad que permite interceptar, examinar y auditar el tráfico de datos en bruto que transita a través de una interfaz de red. En el ámbito operativo, es utilizado por los equipos defensivos (<strong>Blue Team</strong>) para el monitoreo de tráfico anómalo, la detección de intrusiones y el análisis forense de incidentes, mientras que los equipos ofensivos (<strong>Red Team</strong>) lo emplean para la inspección de credenciales transmitidas en texto claro, el reconocimiento pasivo y el mapeo de servicios expuestos.
+            </p>
+            <p class="relato-introductorio">
+                En la industria existen soluciones comerciales y automatizadas altamente consolidadas como <strong>Wireshark, Tcpdump o Tshark</strong>, las cuales ofrecen interfaces gráficas avanzadas y decodificadores automáticos preconstruidos. Sin embargo, la diferencia fundamental con el analizador programado en esta misión radica en el nivel de abstracción: mientras las herramientas comerciales ocultan la complejidad interna de los protocolos, desarrollar nuestro propio <em>sniffer bare-metal</em> desde cero en Python mediante <strong>Raw Sockets</strong> nos obligó a desmenuzar manualmente la trama byte por byte (Ethernet, IPv4 y TCP/UDP). Esta práctica hizo que el aprendizaje fuera verdaderamente profundo y antifrágil, pasando de la simple observación en una GUI a la comprensión física de cómo el kernel de Linux procesa y des-serializa cada paquete de red.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 1: ¿Qué es, qué hace y cómo funciona? -->
+        <section class="panel-mision-detalle">
+            <h3>🧠 Fundamentos Técnicos: ¿Qué hace y cómo funciona un Sniffer?</h3>
+            <p>
+                A nivel de arquitectura de red, un sniffer bare-metal interactúa directamente con la pila de protocolos de Linux sin capas intermedias de abstracción:
+            </p>
+
+            <div class="grilla-conceptos">
+                <div class="caja-concepto">
+                    <h4>🔌 Raw Sockets (AF_PACKET)</h4>
+                    <p>
+                        A diferencia de los sockets estándar que operan en Capa 4 (TCP/UDP), el uso de <code>socket.AF_PACKET</code> junto con <code>socket.SOCK_RAW</code> le indica al kernel de Linux que entregue las tramas Ethernet crudas completas (Capa 2), incluyendo las direcciones MAC físicas y los identificadores EtherType.
+                    </p>
+                </div>
+                <div class="caja-concepto">
+                    <h4>📡 Modo Promiscuo</h4>
+                    <p>
+                        Por defecto, la tarjeta de red descarta los paquetes cuyo destino no sea su propia dirección MAC. Activando el modo promiscuo (<code>sudo ip link set dev &lt;interfaz&gt; promisc on</code>), el adaptador procesa todo flujo electromagnético o eléctrico que circule por el medio físico local.
+                    </p>
+                </div>
+                <div class="caja-concepto">
+                    <h4>📦 Des-serialización Binaria</h4>
+                    <p>
+                        Mediante el módulo nativo <code>struct</code> de Python (<code>struct.unpack</code>), los paquetes recibidos en formato de bytes binarios son descompuestos mapeando la estructura exacta de las cabeceras Ethernet (14 bytes), IPv4 (20+ bytes) y la Capa de Transporte calculada dinámicamente mediante el offset <strong>IHL</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: Código Fuente del Programa (sniffer.py) -->
+        <section class="panel-mision-detalle">
+            <h3>💻 Análisis del Código Fuente (`sniffer.py`)</h3>
+            <p>
+                A continuación se muestra el código fuente implementado en Python 3 puro. El programa valida privilegios de superusuario, configura la captura en crudo y aplica el offset dinámico del IHL (<em>Internet Header Length</em>) para calcular exactamente el inicio de las cabeceras TCP/UDP:
+            </p>
+
+            <div class="contenedor-terminal">
+                <div class="encabezado-terminal">
+                    <span class="punto-terminal rojo"></span>
+                    <span class="punto-terminal amarillo"></span>
+                    <span class="punto-terminal verde"></span>
+                    <span class="titulo-terminal">python3 sniffer.py 80 — Terminal Bare-Metal</span>
+                </div>
+                <pre class="codigo-terminal"><code>import socket
+import struct
+import sys
+
+def main():
+    # Validar argumento de puerto
+    if len(sys.argv) < 2:
+        print("Uso: sudo python3 sniffer.py <puerto>")
+        sys.exit(1)
+    filtro_puerto = int(sys.argv[1])
+
+    try:
+        # Abrir socket crudo en la familia AF_PACKET (Capa 2 / Ethernet)
+        conn = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3))
+    except PermissionError:
+        print("[-] Error: Se requieren privilegios de administrador (sudo).", file=sys.stderr)
+        sys.exit(1)
+    except AttributeError:
+        print("[-] Error: AF_PACKET solo está disponible en sistemas Linux.", file=sys.stderr)
+        sys.exit(1)
+
+    print(f"[+] Sniffer activo... Escuchando tráfico en el puerto {filtro_puerto}")
+
+    while True:
+        try:
+            raw_data, addr = conn.recvfrom(65535)
+        except KeyboardInterrupt:
+            print("\n[+] Sniffer detenido por el usuario.")
+            break
+
+        if len(raw_data) < 14:
+            continue
+
+        # 1. Desempaquetado de la Cabecera Ethernet (14 bytes)
+        eth_header = raw_data[:14]
+        dest_mac, src_mac, eth_proto = struct.unpack('!6s6sH', eth_header)
+
+        def format_mac(bytes_addr):
+            return ':'.join(f'{b:02x}' for b in bytes_addr)
+
+        # 2. Desempaquetado de IPv4 (EtherType 0x0800)
+        if eth_proto == 0x0800 and len(raw_data) >= 34:
+            ip_header_raw = raw_data[14:34]
+            ip_data = struct.unpack('!BBHHHBBH4s4s', ip_header_raw)
+
+            version_ihl = ip_data
+            version = version_ihl >> 4
+            ihl = (version_ihl & 0xF) * 4  # Offset dinámico de la cabecera IP
+            ttl = ip_data[2]
+            protocol = ip_data[3]
+            src_ip = socket.inet_ntoa(ip_data[4])
+            dest_ip = socket.inet_ntoa(ip_data[5])
+
+            proto_name = "OTRO"
+            if protocol == 1:
+                proto_name = "ICMP"
+            elif protocol == 6:
+                proto_name = "TCP"
+            elif protocol == 17:
+                proto_name = "UDP"
+
+            src_port = dest_port = None
+
+            # 3. Offset Dinámico y Extraer Puertos de Capa 4
+            if protocol == 6 and len(raw_data) >= 14 + ihl + 20:
+                tcp_header = raw_data[14+ihl:14+ihl+20]
+                src_port, dest_port = struct.unpack('!HH', tcp_header[:4])
+            elif protocol == 17 and len(raw_data) >= 14 + ihl + 8:
+                udp_header = raw_data[14+ihl:14+ihl+8]
+                src_port, dest_port = struct.unpack('!HH', udp_header[:4])
+
+            # 4. Filtrado por puerto especificado
+            if src_port == filtro_puerto or dest_port == filtro_puerto:
+                print(f"\n[+] Trama Detectada:")
+                print(f"    |- MAC Origen: {format_mac(src_mac)} -> MAC Destino: {format_mac(dest_mac)}")
+                print(f"    |- IP Versión: {version} | Tamaño Cabecera: {ihl} bytes | TTL: {ttl}")
+                print(f"    |- Protocolo: {proto_name} ({protocol})")
+                print(f"    |- Ruta: {src_ip}:{src_port} -> {dest_ip}:{dest_port}")
+
+if __name__ == "__main__":
+    main()</code></pre>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: Escenario Real de Pruebas e Interceptación -->
+        <section class="panel-mision-detalle">
+            <h3>🧪 Escenario Real de Pruebas e Interceptación de Tráfico</h3>
+            <p>
+                Para validar la efectividad de la herramienta sin interferencia de abstracciones virtuales, se montó un laboratorio de prueba físico utilizando tres dispositivos interconectados en la red local:
+            </p>
+
+            <div class="esquema-topologia">
+                <div class="nodo-topologia tablet">
+                    <div class="icono-nodo">📱</div>
+                    <h4>Tablet (Servidor Web)</h4>
+                    <p>Alojó un servidor HTTP simple sirviendo una página web en un puerto dedicado de la red.</p>
+                </div>
+                <div class="flecha-conector">⇄</div>
+                <div class="nodo-topologia ubuntu">
+                    <div class="icono-nodo">💻 Linux</div>
+                    <h4>Laptop Ubuntu (Sniffer SOC)</h4>
+                    <p>Ejecutó <code>sniffer.py</code> en modo promiscuo con <code>sudo</code>, capturando todo el tráfico circulante.</p>
+                </div>
+                <div class="flecha-conector">⇄</div>
+                <div class="nodo-topologia windows">
+                    <div class="icono-nodo">💻 Win</div>
+                    <h4>Laptop Windows (Cliente HTTP)</h4>
+                    <p>Realizaba peticiones de navegación enviando paquetes TCP/HTTP hacia la IP de la tablet.</p>
+                </div>
+            </div>
+
+            <p class="texto-resultado-prueba">
+                <strong>Resultado Operativo:</strong> Al realizar las peticiones web desde la laptop Windows hacia la tablet, la máquina intermediaria con Ubuntu capturó e imprimió en consola las tramas en tiempo real, registrando las direcciones MAC de los adaptadores de red, las direcciones IP internas y la negociación de puertos TCP.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 4: Fricción Deliberada, Sistema 2 y Perspectiva Blue Team -->
+        <section class="panel-mision-detalle">
+            <h3>🛡️️ Fricción Deliberada, Factores Rompe-Intuición y Blue Team</h3>
+            
+            <div class="bloque-friccion">
+                <h4>🧠 Factor Rompe-Intuición (System 2 Break)</h4>
+                <ul>
+                    <li><strong>Privilegios del Kernel:</strong> La ausencia inicial de paquetes no se debió a un error en el código de Python, sino a la protección del kernel de Linux que impide a usuarios no privilegiados abrir sockets <code>AF_PACKET</code> o alterar el estado promiscuo del hardware.</li>
+                    <li><strong>Diferenciación de Interfaces:</strong> El tráfico de pruebas locales (ej. <code>ssh localhost</code>) circula a través de la interfaz virtual <em>loopback</em> (<code>lo</code>) con direcciones MAC nulas (<code>00:00:00:00:00:00</code>), a diferencia del tráfico de la tarjeta física (<code>eno1</code>) que refleja la transmisión real en el medio.</li>
+                </ul>
+            </div>
+
+            <div class="bloque-friccion blue-team">
+                <h4>🩹 Mitigación & OpSec (Perspectiva Defensiva)</h4>
+                <ul>
+                    <li><strong>Desactivación de Modo Promiscuo:</strong> El modo promiscuo debe desactivarse inmediatamente al concluir el diagnóstico (<code>sudo ip link set dev eno1 promisc off</code>) para evitar sobrecargas de procesamiento por tramas de broadcast y prevenir la detección pasiva por latencia ICMP.</li>
+                    <li><strong>Detección SOC:</strong> Las llamadas a sockets crudos no autorizados en la infraestructura deben monitorearse mediante auditores de eventos del kernel como <strong>eBPF</strong> o <strong>Auditd</strong>, generando alertas cuando procesos no firmados soliciten la familia de protocolos <code>AF_PACKET</code>.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página institucional -->
+    <footer class="pie-pagina">
+        <div class="contenedor-pie">
+            <div class="seccion-acerca">
+                <h4>Antifragile Cyber Labs</h4>
+                <p>Las respuestas fáciles se buscan en Google; las soluciones antifrágiles se construyen desde el metal.</p>
+            </div>
+            <div class="seccion-creditos">
+                <p>&copy; 2026 Antifragile Cyber Labs — DAR & Cybersecurity</p>
+                <p class="autor-pie">Operador: <strong>Rick (jorgerickdev)</strong></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
