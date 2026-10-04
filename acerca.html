@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antifragile Cyber Labs | Acerca del Proyecto</title>
-    <!-- Estilos globales y específicos del proyecto -->
+    <!-- Estilos globales, de dashboard y específicos de acerca -->
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="stylesheet" href="assets/css/acerca.css">
 </head>
-<body class="cuerpo-dashboard">
+<body class="cuerpo-dashboard cuerpo-acerca">
 
-    <!-- Encabezado principal del panel -->
+    <!-- Encabezado principal del panel (Fijo) -->
     <header class="encabezado-dashboard">
         <div class="bloque-identidad">
             <img src="assets/img/antifragile_cyber_labs_logo.png" alt="Logo Antifragile Cyber Labs" class="logo-dashboard" width="140">
@@ -22,11 +22,11 @@
         </div>
         <div class="bloque-operador">
             <span class="etiqueta-estado">🟢 OPERADOR ACTIVO: <strong>Rick (jorgerickdev)</strong></span>
-            <a href="login.html" class="boton-cerrar-sesion">Cerrar Sesión</a>
+            <a href="index.html" class="boton-cerrar-sesion">Cerrar Sesión</a>
         </div>
     </header>
 
-    <!-- Barra de navegación principal -->
+    <!-- Barra de navegación principal (Fija) -->
     <nav class="barra-navegacion">
         <ul class="menu-navegacion">
             <li><a href="dashboard.html" class="enlace-nav">Panel Central</a></li>
@@ -37,7 +37,7 @@
         </ul>
     </nav>
 
-    <!-- Contenido principal: Manifiesto y Hoja de Ruta -->
+    <!-- Contenedor Principal (Única área con scroll interno) -->
     <main class="contenedor-principal">
 
         <!-- Encabezado del Manifiesto -->
@@ -68,7 +68,7 @@
             </div>
         </section>
 
-        <!-- Mapa de Ruta de Operaciones en Formato de Lista -->
+        <!-- Mapa de Ruta de Operaciones -->
         <section class="panel-acerca-detalle">
             <h3>🗺️ Mapa de Ruta de Operaciones (4 Meses)</h3>
             
@@ -114,7 +114,7 @@
 
     </main>
 
-    <!-- Pie de página institucional -->
+    <!-- Pie de página institucional (Fijo) -->
     <footer class="pie-pagina">
         <div class="contenedor-pie">
             <div class="seccion-acerca">

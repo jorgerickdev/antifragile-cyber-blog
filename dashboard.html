@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antifragile Cyber Labs | Dashboard SOC</title>
-    <!-- Estilos globales y específicos del dashboard -->
+    <title>Antifragile Cyber Labs | Panel Central SOC</title>
+    <!-- Estilos globales y específicos del Dashboard -->
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body class="cuerpo-dashboard">
 
-    <!-- Encabezado principal del panel con identidad y usuario -->
+    <!-- Encabezado principal del panel (Fijo) -->
     <header class="encabezado-dashboard">
         <div class="bloque-identidad">
             <img src="assets/img/antifragile_cyber_labs_logo.png" alt="Logo Antifragile Cyber Labs" class="logo-dashboard" width="140">
@@ -20,12 +20,12 @@
             </div>
         </div>
         <div class="bloque-operador">
-            <span class="etiqueta-estado">🟢 OPERADOR ACTIVO: <strong>Rick</strong></span>
-            <a href="login.html" class="boton-cerrar-sesion">Cerrar Sesión</a>
+            <span class="etiqueta-estado">🟢 OPERADOR ACTIVO: <strong>Rick (jorgerickdev)</strong></span>
+            <a href="index.html" class="boton-cerrar-sesion">Cerrar Sesión</a>
         </div>
     </header>
 
-    <!-- Barra de navegación principal del laboratorio -->
+    <!-- Barra de navegación principal (Fija) -->
     <nav class="barra-navegacion">
         <ul class="menu-navegacion">
             <li><a href="dashboard.html" class="enlace-nav activo">Panel Central</a></li>
@@ -36,60 +36,76 @@
         </ul>
     </nav>
 
-    <!-- Contenido principal: Resumen y accesos a las misiones -->
+    <!-- Contenedor Principal (Única área con scroll interno) -->
     <main class="contenedor-principal">
-        
-        <!-- CAMBIO 1: Panel de bienvenida con el origen real del proyecto -->
+
+        <!-- Panel de Bienvenida y Estado del Sistema -->
         <section class="panel-bienvenida">
-            <h2>Bienvenido al Centro de Control de Operaciones</h2>
+            <span class="badget-estado">SISTEMA ONLINE — ENTRENAMIENTO BARE-METAL</span>
+            <h2>🛡️ Bienvenido al Centro de Mando Antifrágil</h2>
             <p class="texto-resumen">
-                Este portal nació originalmente como la primera práctica de la asignatura <em>Desarrollo de Aplicaciones de Red (DAR)</em> para la maquetación de un blog. Aprovechando esta base, el espacio evolucionó para convertirse en la bitácora técnica de documentación para las <strong>15 misiones de entrenamiento intensivo</strong> del proyecto <a href="https://github.com/jorgerickdev/antifragile-cybersecurity-labs" target="_blank" style="color: var(--color-primario);">antifragile-cybersecurity-labs</a>.
-            </p>
-            <p class="texto-instruccion">
-                Filosofía de ingeniería: Aprendizaje de ciberseguridad bare-metal (Red Team / Blue Team) en 120 días, <strong>sin herramientas automáticas</strong> y programando desde los fundamentos.
+                Consola central de monitoreo, bitácoras de red e inspección de protocolo a bajo nivel. Selecciona un módulo operativo para revisar los avances y código fuente.
             </p>
         </section>
 
-        <!-- CAMBIO 2: Documentación ajustada a las misiones reales de Redes Bare-Metal -->
-        <section class="seccion-misiones">
+        <!-- Tarjetas de Misiones de Operación -->
+        <section class="seccion-misiones-grid">
             
             <!-- Misión 01 -->
             <article class="tarjeta-mision">
-                <span class="etiqueta-mision">MISIÓN 01 — BARE-METAL</span>
-                <h3>Sniffer Desnudo (Raw Sockets)</h3>
-                <p>Disección de tráfico de red a nivel de bits utilizando Raw Sockets en Python, sin librerías externas ni herramientas automáticas.</p>
-                <a href="mision-01.html" class="boton-tarjeta">Acceder a Misión</a>
+                <div class="encabezado-tarjeta">
+                    <span class="tag-mision">MÓDULO 01</span>
+                    <span class="estado-mision completado">Completado</span>
+                </div>
+                <h3>Misión 01: Sniffer Bare-Metal & Filtro L4</h3>
+                <p>Captura e inspección de tramas Ethernet/IPv4 en tiempo real utilizando sockets crudos (AF_PACKET) en Python sin librerías externas.</p>
+                <div class="metricas-tarjeta">
+                    <span><strong>Nivel:</strong> Capa 2 / 3 / 4</span>
+                    <span><strong>Entorno:</strong> Ubuntu Linux</span>
+                </div>
+                <a href="mision-01.html" class="boton-mision">Ingresar al Módulo</a>
             </article>
 
             <!-- Misión 02 -->
             <article class="tarjeta-mision">
-                <span class="etiqueta-mision">MISIÓN 02 — BARE-METAL</span>
-                <h3>Escáner SYN/FIN Stealth</h3>
-                <p>Construcción manual de paquetes TCP para escaneo sigiloso de puertos y técnicas de evasión de reglas de firewall.</p>
-                <a href="mision-02.html" class="boton-tarjeta">Acceder a Misión</a>
+                <div class="encabezado-tarjeta">
+                    <span class="tag-mision">MÓDULO 02</span>
+                    <span class="estado-mision pendiente">Próximamente</span>
+                </div>
+                <h3>Misión 02: Escáner Stealth SYN/FIN</h3>
+                <p>Desarrollo manual de escáner de puertos sigiloso construyendo cabeceras TCP personalizadas para evasión de reglas IDS/IPS.</p>
+                <div class="metricas-tarjeta">
+                    <span><strong>Nivel:</strong> Sockets Crudos TCP</span>
+                    <span><strong>Entorno:</strong> Scapy / C</span>
+                </div>
+                <a href="mision-02.html" class="boton-mision deshabilitado">En Desarrollo</a>
             </article>
 
             <!-- Misión 03 -->
             <article class="tarjeta-mision">
-                <span class="etiqueta-mision">MISIÓN 03 — BARE-METAL</span>
-                <h3>Exfiltración e Inyección ICMP</h3>
-                <p>Exfiltración e inyección silenciosa de binarios mediante la encapsulación en paquetes ICMP crudos (Evasión SOC).</p>
-                <a href="mision-03.html" class="boton-tarjeta">Acceder a Misión</a>
+                <div class="encabezado-tarjeta">
+                    <span class="tag-mision">MÓDULO 03</span>
+                    <span class="estado-mision pendiente">Próximamente</span>
+                </div>
+                <h3>Misión 03: Inyector de Paquetes & Spoofing</h3>
+                <p>Simulación de ataques de envenenamiento ARP y suplantación de identidad para análisis forense y mitigación Blue Team.</p>
+                <div class="metricas-tarjeta">
+                    <span><strong>Nivel:</strong> MitM & Forense</span>
+                    <span><strong>Entorno:</strong> Linux SOC</span>
+                </div>
+                <a href="mision-03.html" class="boton-mision deshabilitado">En Desarrollo</a>
             </article>
 
         </section>
 
     </main>
 
-    <!-- CAMBIO 3: Pie de página con enlace a la página dedicada del README / Acerca de -->
+    <!-- Pie de página institucional (Fijo) -->
     <footer class="pie-pagina">
         <div class="contenedor-pie">
             <div class="seccion-acerca">
-                <h4>Acerca de Antifragile Cybersecurity</h4>
-                <p>
-                    Entrenamiento de 120 días para la consolidación como Analista de Ciberseguridad. 
-                    <a href="acerca.html" style="color: var(--color-primario); text-decoration: underline;">Conoce el manifiesto completo y mapa de ruta aquí &rarr;</a>
-                </p>
+                <h4>Antifragile Cyber Labs</h4>
+                <p>Las respuestas fáciles se buscan en Google; las soluciones antifrágiles se construyen desde el metal.</p>
             </div>
             <div class="seccion-creditos">
                 <p>&copy; 2026 Antifragile Cyber Labs — DAR & Cybersecurity</p>

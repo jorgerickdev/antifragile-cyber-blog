@@ -2,12 +2,26 @@
    Antifragile Cyber Labs — Estilos de Acerca del Proyecto (acerca.css)
    ========================================================================== */
 
+/* --- Fondo Único de la Página Acerca del Proyecto --- */
+body.cuerpo-acerca {
+    background: linear-gradient(
+        135deg,
+        rgba(6, 9, 19, 0.82),
+        rgba(10, 15, 30, 0.88)
+    ), url('../img/antifragile_cyber_acerca_banner.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* --- Paneles y Tarjetas Ultra-Translúcidas con Borde Neón --- */
 .panel-acerca-detalle {
-    background-color: var(--color-tarjeta);
-    border: 1px solid var(--color-borde);
+    background-color: rgba(10, 15, 30, 0.28);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(0, 242, 254, 0.4);
     border-radius: 10px;
     padding: 25px;
     margin-bottom: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 12px rgba(0, 242, 254, 0.08);
 }
 
 .panel-acerca-detalle h3 {
@@ -15,14 +29,27 @@
     font-size: 1.2rem;
     margin-bottom: 15px;
     letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    padding-bottom: 8px;
 }
 
+.panel-acerca-detalle p {
+    color: var(--color-texto);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* --- Tarjeta de Fricción Deliberada --- */
 .tarjeta-friccion {
-    background-color: var(--color-fondo);
+    background-color: rgba(6, 9, 19, 0.35);
+    backdrop-filter: blur(8px);
     border-left: 4px solid var(--color-error);
-    padding: 15px 20px;
+    border-top: 1px solid rgba(0, 242, 254, 0.2);
+    border-right: 1px solid rgba(0, 242, 254, 0.2);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    padding: 18px 22px;
     border-radius: 6px;
-    margin-top: 15px;
+    margin-top: 18px;
 }
 
 .tarjeta-friccion h4 {
@@ -31,35 +58,45 @@
     font-size: 0.95rem;
 }
 
-.tarjeta-friccion ul, .bloque-stack ul {
+.tarjeta-friccion ul, 
+.bloque-stack ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     font-size: 0.88rem;
     color: var(--color-texto);
+    padding-left: 0;
 }
 
-/* Estilos de la lista del Mapa de Ruta */
+/* --- Lista del Mapa de Ruta (4 Meses) --- */
 .lista-mapa-ruta {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-top: 15px;
+    padding-left: 0;
 }
 
 .lista-mapa-ruta li {
-    background-color: var(--color-fondo);
-    border: 1px solid var(--color-borde);
+    background-color: rgba(6, 9, 19, 0.35);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 242, 254, 0.3);
     border-left: 4px solid var(--color-primario);
-    padding: 15px 20px;
+    padding: 16px 20px;
     border-radius: 6px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.lista-mapa-ruta li:hover {
+    transform: translateX(4px);
+    border-color: var(--color-primario);
 }
 
 .lista-mapa-ruta strong {
     color: var(--color-primario);
-    font-size: 1rem;
+    font-size: 0.98rem;
     display: block;
     margin-bottom: 5px;
 }
@@ -67,10 +104,11 @@
 .lista-mapa-ruta p {
     color: var(--color-secundario);
     font-size: 0.88rem;
-    line-height: 1.4;
+    line-height: 1.45;
     margin: 0;
 }
 
+/* --- Stack Tecnológico y Próximo Hito --- */
 .contenedor-stack-hito {
     display: flex;
     justify-content: space-between;
@@ -78,7 +116,8 @@
     gap: 25px;
 }
 
-.bloque-stack, .bloque-hito {
+.bloque-stack, 
+.bloque-hito {
     flex: 1;
     min-width: 280px;
 }

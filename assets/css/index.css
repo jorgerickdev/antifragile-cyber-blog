@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Antifragile Cyber Labs — Estilos de Pantalla de Inicio / Login (index.css)
+   ========================================================================== */
+
+/* --- Fondo Centrado para Pantalla de Login --- */
+body.cuerpo-login {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        135deg,
+        rgba(6, 9, 19, 0.88),
+        rgba(10, 15, 30, 0.94)
+    ), url('../img/antifragile_cyber_acerca_banner.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-texto);
+}
+
+.contenedor-login {
+    width: 100%;
+    max-width: 440px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- Tarjeta de Login Ultra-Translúcida con Borde Neón --- */
+.tarjeta-login {
+    background-color: rgba(10, 15, 30, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    border-radius: 12px;
+    padding: 35px 30px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 242, 254, 0.08);
+    text-align: center;
+}
+
+.encabezado-login .logo-login {
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.4));
+}
+
+.encabezado-login h1 {
+    font-size: 1.35rem;
+    color: var(--color-primario);
+    margin: 0 0 6px 0;
+    letter-spacing: 1px;
+}
+
+.subtitulo-login {
+    font-size: 0.85rem;
+    color: var(--color-secundario);
+    margin: 0 0 25px 0;
+}
+
+/* --- Formulario de Entrada --- */
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: left;
+}
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.grupo-campo label {
+    font-size: 0.82rem;
+    color: var(--color-texto);
+    font-weight: 500;
+}
+
+.grupo-campo input {
+    background-color: rgba(6, 9, 19, 0.6);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: 6px;
+    padding: 11px 14px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.grupo-campo input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+    background-color: rgba(6, 9, 19, 0.8);
+}
+
+.bloque-estado-credencial {
+    text-align: center;
+    margin: 4px 0;
+}
+
+.badget-seguridad {
+    font-size: 0.72rem;
+    color: var(--color-primario);
+    background-color: rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 242, 254, 0.25);
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.boton-ingresar {
+    background-color: rgba(0, 242, 254, 0.15);
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.boton-ingresar:hover {
+    background-color: var(--color-primario);
+    color: #060913;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+}
+
+/* --- Pie de la Tarjeta --- */
+.pie-login {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 242, 254, 0.2);
+    font-size: 0.78rem;
+    color: var(--color-secundario);
+}
+
+.pie-login p {
+    margin: 3px 0;
+}
+
+.version-sistema {
+    font-size: 0.72rem;
+    opacity: 0.7;
+}

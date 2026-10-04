@@ -1,26 +1,208 @@
 /* ==========================================================================
-   Antifragile Cyber Labs — Estilos Globales & Variables (global.css)
+   Antifragile Cyber Labs — Estilos Globales (global.css)
    ========================================================================== */
 
+/* --- Variables de Color y Tema Cyber Dark --- */
 :root {
-    --color-fondo: #0a0f1d;
-    --color-tarjeta: #111827;
-    --color-borde: #1f2937;
-    --color-texto: #f3f4f6;
-    --color-secundario: #9ca3af;
+    --color-fondo: #060913;
+    --color-tarjeta: rgba(10, 15, 30, 0.28);
     --color-primario: #00f2fe;
-    --color-hover: #4facfe;
-    --color-error: #ff4b4b;
+    --color-secundario: #94a3b8;
+    --color-texto: #e2e8f0;
+    --color-borde: rgba(0, 242, 254, 0.4);
+    --color-error: #ff0055;
+    --color-exito: #27c93f;
+    --color-advertencia: #ffbd2e;
 }
 
-* {
+/* --- Reset Básico --- */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-    background-color: var(--color-fondo);
+/* --- 1. Estructura de Consola SOC a Pantalla Completa (100vh) --- */
+html, body.cuerpo-dashboard {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Congela la ventana completa para evitar scroll de página */
+    display: flex;
+    flex-direction: column;
     color: var(--color-texto);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-fondo);
+}
+
+/* --- 2. Header Fijo Inmóvil (Arriba) --- */
+.encabezado-dashboard {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    background-color: rgba(10, 15, 30, 0.90);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.bloque-identidad {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.bloque-identidad h1 {
+    font-size: 1.3rem;
+    color: var(--color-primario);
+    margin: 0 0 4px 0;
+    letter-spacing: 1px;
+}
+
+.bloque-identidad p {
+    font-size: 0.85rem;
+    color: var(--color-secundario);
+    margin: 0;
+}
+
+.bloque-operador {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.etiqueta-estado {
+    font-size: 0.85rem;
+    background-color: rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: var(--color-texto);
+}
+
+.boton-cerrar-sesion {
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: all 0.3s ease;
+}
+
+.boton-cerrar-sesion:hover {
+    background-color: var(--color-error);
+    color: #ffffff;
+}
+
+/* --- 3. Barra de Navegación Fija Inmóvil --- */
+.barra-navegacion {
+    flex-shrink: 0;
+    background-color: rgba(6, 9, 19, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    padding: 0 30px;
+    z-index: 999;
+}
+
+.menu-navegacion {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.enlace-nav {
+    display: inline-block;
+    padding: 12px 16px;
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.enlace-nav:hover, 
+.enlace-nav.activo {
+    color: var(--color-primario);
+    border-bottom-color: var(--color-primario);
+    background-color: rgba(0, 242, 254, 0.05);
+}
+
+/* --- 4. Contenedor Principal: ÚNICA ZONA CON SCROLL INTERNO --- */
+.contenedor-principal {
+    flex: 1;
+    overflow-y: auto;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+/* --- 5. Pie de Página Fijo Inmóvil (Abajo) --- */
+.pie-pagina {
+    flex-shrink: 0;
+    background-color: rgba(6, 9, 19, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 242, 254, 0.3);
+    padding: 16px 0;
+    z-index: 1000;
+}
+
+.contenedor-pie {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.seccion-acerca h4 {
+    color: var(--color-primario);
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+}
+
+.seccion-acerca p {
+    color: var(--color-secundario);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.seccion-creditos {
+    text-align: right;
+    color: var(--color-secundario);
+    font-size: 0.82rem;
+}
+
+.seccion-creditos p {
+    margin: 2px 0;
+}
+
+/* --- 6. Personalización de la Barra de Scroll Interna (Estilo Cyber Dark) --- */
+.contenedor-principal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contenedor-principal::-webkit-scrollbar-track {
+    background: rgba(6, 9, 19, 0.5);
+}
+
+.contenedor-principal::-webkit-scrollbar-thumb {
+    background: rgba(0, 242, 254, 0.3);
+    border-radius: 4px;
+}
+
+.contenedor-principal::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primario);
 }

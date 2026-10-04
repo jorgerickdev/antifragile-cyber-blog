@@ -4,40 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antifragile Cyber Labs | Acceso SOC</title>
-    <!-- Estilos globales del proyecto -->
+    <!-- Estilos globales y de acceso -->
     <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body class="cuerpo-login">
 
     <div class="contenedor-login">
-        <!-- Encabezado con identidad del laboratorio -->
-        <div class="encabezado-login">
-            <img src="assets/img/antifragile_cyber_labs_logo.png" alt="Logo Antifragile Cyber Labs" class="logo-login" width="180">
-            <h2>ANTIFRAGILE CYBER LABS</h2>
-            <p>Acceso Restringido - Operaciones de Red</p>
-        </div>
-        
-        <!-- Formulario de autenticación del operador -->
-        <form id="formularioLogin" class="formulario-login">
-            <div class="grupo-formulario">
-                <label for="usuario">Usuario Operador:</label>
-                <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required autocomplete="off">
+        <!-- Tarjeta de Acceso con Glassmorphism -->
+        <main class="tarjeta-login">
+            <div class="encabezado-login">
+                <img src="assets/img/antifragile_cyber_labs_logo.png" alt="Logo Antifragile Cyber Labs" class="logo-login" width="120">
+                <h1>ANTIFRAGILE CYBER LABS</h1>
+                <p class="subtitulo-login">Acceso a Consola SOC & Monitoreo Bare-Metal</p>
             </div>
-            
-            <div class="grupo-formulario">
-                <label for="clave">Contraseña de Red:</label>
-                <input type="password" id="clave" name="clave" placeholder="••••••••" required>
-            </div>
-            
-            <!-- Contenedor para mensajes de validación dinámicos -->
-            <div id="mensajeError" class="mensaje-error" style="display: none;"></div>
 
-            <button type="submit" class="boton-principal">Iniciar Sesión</button>
-        </form>
+            <form action="dashboard.html" method="GET" class="formulario-login">
+                <div class="grupo-campo">
+                    <label for="usuario">ID de Operador / Usuario:</label>
+                    <input type="text" id="usuario" name="usuario" value="jorgerickdev" required placeholder="Ej. jorgerickdev">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="password">Clave de Acceso SOC:</label>
+                    <input type="password" id="password" name="password" value="••••••••••••" required placeholder="Ingresa tu credencial">
+                </div>
+
+                <div class="bloque-estado-credencial">
+                    <span class="badget-seguridad">🔒 ENCRYPTION: AES-256 / SHA-256</span>
+                </div>
+
+                <button type="submit" class="boton-ingresar">Autenticar & Iniciar Sesión ➔</button>
+            </form>
+
+            <footer class="pie-login">
+                <p>Nivel de Autenticación: <strong>SOC Level 1 / Bare-Metal</strong></p>
+                <p class="version-sistema">v2.4.0-antifragile — DAR 2026</p>
+            </footer>
+        </main>
     </div>
 
-    <!-- Lógica de validación de credenciales -->
-    <script src="assets/js/login.js"></script>
 </body>
 </html>
