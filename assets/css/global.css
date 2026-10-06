@@ -206,3 +206,34 @@ html, body.cuerpo-dashboard {
 .contenedor-principal::-webkit-scrollbar-thumb:hover {
     background: var(--color-primario);
 }
+
+/* Estructura base de navegación */
+.navegacion-principal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap; /* Permite que si no caben en una línea, bajen limpiamente */
+}
+
+/* Ajustes específicos para pantallas de celular */
+@media (max-width: 768px) {
+    .cabecera-principal {
+        flex-direction: column; /* Apila el logo/título y la navegación */
+        gap: 12px;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .navegacion-principal {
+        justify-content: center;
+        width: 100%;
+        gap: 6px;
+    }
+
+    .enlace-nav {
+        font-size: 0.78rem;   /* Tamaño adecuado para pantallas de móvil */
+        padding: 6px 10px;
+        white-space: nowrap;  /* Evita saltos de línea dentro del botón */
+    }
+}
+
